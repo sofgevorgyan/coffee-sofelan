@@ -1,0 +1,12 @@
+{
+    "header": {
+        "Home": "Главная",
+        "About": "О нас",
+        "Menu": "Меню",
+        "Gallery": "Галерея",
+        "Stocks": "Акции"
+    },
+    "home":{
+        "welcome": "Добро пожаловать в SOFELAN"
+    }
+}

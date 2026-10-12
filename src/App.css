@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@layer base {
+  .App {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+.Ashot {
+  grid-template-areas: 
+  'a1 .'
+  '. a2'
+  'a3 .'
+  '. a4'
+  'a5 .'
+  '. a6'
+  ;
+
+}

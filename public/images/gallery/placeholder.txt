@@ -1,0 +1,25 @@
+Временные URL для изображений:
+
+1. Интерьер:
+- interior-1.jpg: https://placehold.co/800x600?text=Interior+1
+- interior-2.jpg: https://placehold.co/800x600?text=Interior+2
+
+2. Кофе:
+- coffee-1.jpg: https://placehold.co/800x600?text=Coffee+1
+- coffee-2.jpg: https://placehold.co/800x600?text=Coffee+2
+- coffee-3.jpg: https://placehold.co/800x600?text=Coffee+3
+
+3. Еда:
+- food-1.jpg: https://placehold.co/800x600?text=Food+1
+- food-2.jpg: https://placehold.co/800x600?text=Food+2
+- food-3.jpg: https://placehold.co/800x600?text=Food+3
+
+4. Люди:
+- people-1.jpg: https://placehold.co/800x600?text=People+1
+- people-2.jpg: https://placehold.co/800x600?text=People+2
+
+5. Процесс:
+- process-1.jpg: https://placehold.co/800x600?text=Process+1
+- process-2.jpg: https://placehold.co/800x600?text=Process+2
+
+Пожалуйста, замените эти URL на реальные изображения из вашей коллекции фотографий кофейни. 

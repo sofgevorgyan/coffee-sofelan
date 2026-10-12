@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - Aroma Coffee</title>
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f5f0;
+            color: #3a2a18;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background-color: #5c3d2e;
+            color: #fff;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            font-size: 2.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #e9c69c;
+        }
+
+        /* Хлебные крошки */
+        .breadcrumb {
+            background-color: #e9c69c;
+            padding: 1rem 2rem;
+        }
+        
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-item {
+            color: #5c3d2e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .breadcrumb-separator {
+            margin: 0 0.5rem;
+            color: #b85c38;
+        }
+        
+        .breadcrumb-item.active {
+            font-weight: 700;
+        }
+        
+        /* Заголовок страницы */
+        .page-title {
+            padding: 3rem 2rem;
+            background-color: #5c3d2e;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .page-title h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Секция истории */
+        .history {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #5c3d2e;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #b85c38;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #e9c69c;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #b85c38;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -12px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #b85c38;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-text {
+            line-height: 1.6;
+        }
+
+        /* Секция команды */
+        .team {
+            background-color: #e9c69c;
+            padding: 5rem 2rem;
+        }
+        
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-member-img {
+            height: 300px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #5c3d2e, #b85c38);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .team-member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-member-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #5c3d2e;
+        }
+        
+        .team-member-info p {
+            color: #b85c38;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member-bio {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #5c3d2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        
+        .team-social-link:hover {
+            background-color: #b85c38;
+        }
+
+        /* Секция миссии */
+        .mission {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .mission-img {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #5c3d2e, #b85c38);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 6rem;
+        }
+        
+        .mission-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+        
+        .mission-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #5c3d2e;
+        }
+        
+        .mission-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Секция значений */
+        .values {
+            background-color: #5c3d2e;
+            color: #fff;
+            padding: 5rem 2rem;
+        }
+        
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .value-description {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Секция сертификатов */
+        .certificates {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .certificate {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .certificate:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certificate-img {
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #5c3d2e, #b85c38);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .certificate-info {
+            padding: 1.5rem;
+        }
+        
+        .certificate-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #5c3d2e;
+        }
+        
+        .certificate-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #3a2a18;
+            color: #fff;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #5c3d2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: #b85c38;
+        }
+        
+        .footer-heading {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #b85c38;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-bottom-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-bottom-links a:hover {
+            opacity: 1;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .mission {
+                flex-direction: column;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 18px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">☕</span>
+            <span>Aroma Coffee</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Хлебные крошки -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="index.html" class="breadcrumb-item">Главная</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item active">О нас</span>
+        </div>
+    </div>
+
+    <!-- Заголовок страницы -->
+    <div class="page-title">
+        <h1>О нашей кофейне</h1>
+        <p>Узнайте историю, познакомьтесь с командой и проникнитесь философией Aroma Coffee</p>
+    </div>
+
+    <!-- Секция истории -->
+    <section class="history">
+        <h2 class="section-title">Наша история</h2>
+        <p class="section-subtitle">Как все начиналось и развивалось</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2018</div>
+                    <p class="timeline-text">Идея создания Aroma Coffee родилась у нашего основателя Алексея после путешествия по кофейным плантациям Латинской Америки. Вернувшись в Россию, он решил воплотить свою мечту — создать кофейню с особенной атмосферой и исключительным качеством кофе.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2019</div>
+                    <p class="timeline-text">Открытие первой кофейни Aroma Coffee в центре Москвы. Небольшое уютное помещение, всего 5 столиков и команда из трех единомышленников, влюбленных в кофе.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2020</div>
+                    <p class="timeline-text">Непростой год пандемии стал временем трансформации. Мы запустили доставку кофе и десертов, разработали мобильное приложение и смогли не только сохранить бизнес, но и приобрести новых постоянных клиентов.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2022</div>
+                    <p class="timeline-text">Расширение кофейни — переезд в новое, более просторное помещение. Запуск собственной обжарки кофейных зерен и школы бариста.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2024</div>
+                    <p class="timeline-text">Открытие второй кофейни Aroma Coffee в Санкт-Петербурге. Запуск линейки фирменного кофе для домашнего приготовления.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <p class="timeline-text">Сегодня Aroma Coffee — это не просто кофейня, а целая экосистема для любителей качественного кофе. Мы продолжаем расти и развиваться, сохраняя наши ценности и любовь к кофейному делу.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция команды -->
+    <section class="team">
+        <div class="team-container">
+            <h2 class="section-title">Наша команда</h2>
+            <p class="section-subtitle">Люди, влюбленные в свое дело</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        👨‍💼
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Алексей Соколов</h3>
+                        <p>Основатель и руководитель</p>
+                        <div class="team-member-bio">
+                            Путешественник, кофейный энтузиаст и бизнесмен. Посетил более 30 кофейных плантаций по всему миру. Верит, что чашка хорошего кофе способна изменить день к лучшему.
+                        </div>
+                        <div class="team-social">
+                            <a href="#" class="team-social-link">FB</a>
+                            <a href="#" class="team-social-link">IG</a>
+                            <a href="#" class="team-social-link">TG</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-img">
+                        👩‍🍳
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Мария Ковалева</h3>
+                        <p>Шеф-бариста</p>
+                        <div class="team-member-bio">
+                            Профессиональный бариста с 10-летним опытом. Победитель национальных чемпионатов по приготовлению кофе. Специализируется на альтернативных способах заваривания и латте-арте.
+                        </div>
+                        <div class="team-social">
+                            <a href="#" class="team-social-link">FB</a>
+                            <a href="#" class="team-social-link">IG</a>
+                            <a href="#" class="team-social-link">TG</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-img">
+                        👨‍🍳
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Дмитрий Петров</h3>
+                        <p>Шеф-кондитер</p>
+                        <div class="team-member-bio">
+                            Выпускник французской кулинарной школы Le Cordon Bleu. Создает авторские десерты, которые идеально сочетаются с нашими кофейными напитками. Любит экспериментировать с текстурами и вкусами.
+                        </div>
+                        <div class="team-social">
+                            <a href="#" class="team-social-link">FB</a>
+                            <a href="#" class="team-social-link">IG</a>
+                            <a href="#" class="team-social-link">TG</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-img">
+                        👩‍💼
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Елена Смирнова</h3>
+                        <p>Менеджер по закупкам</p>
+                        <div class="team-member-bio">
+                            Q-грейдер с лицензией SCA. Отвечает за подбор и закупку кофейных зерен. Регулярно посещает кофейные аукционы и напрямую сотрудничает с фермерами для обеспечения лучшего качества зерен.
+                        </div>
+                        <div class="team-social">
+                            <a href="#" class="team-social-link">FB</a>
+                            <a href="#" class="team-social-link">IG</a>
+                            <a href="#" class="team-social-link">TG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция миссии -->
+    <section class="mission">
+        <div class="mission-img">
+            🎯
+        </div>
+        <div class="mission-text">
+            <h2>Наша миссия и философия</h2>
+            <p>В Aroma Coffee мы стремимся создавать не просто кофе, а впечатления и эмоции. Наша миссия — сделать день каждого гостя лучше с помощью безупречного кофе и уютной атмосферы.</p>
+            <p>Мы верим в прямую торговлю с фермерами, устойчивое развитие и этичное потребление. Каждая чашка нашего кофе — это история, которая начинается на кофейных плантациях и заканчивается в руках наших гостей.</p>
+            <p>Мы стремимся быть не просто коммерческим проектом, а сообществом единомышленников, объединенных любовью к кофе и стремлением к качеству во всем.</p>
+        </div>
+    </section>
+
+    <!-- Секция ценностей -->
+    <section class="values">
+        <div class="values-container">
+            <h2 class="section-title">Наши ценности</h2>
+            <p class="section-subtitle">Принципы, которыми мы руководствуемся</p>
+            
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">🌱</div>
+                    <h3 class="value-title">Устойчивое развитие</h3>
+                    <p class="value-description">Мы заботимся об окружающей среде и поддерживаем экологически ответственное производство кофе. Используем перерабатываемые материалы и сокращаем отходы.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">Честная торговля</h3>
+                    <p class="value-description">Мы платим справедливую цену за кофе и поддерживаем фермеров, которые выращивают наши зерна, обеспечивая им достойные условия труда и жизни.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">⭐</div>
+                    <h3 class="value-title">Превосходное качество</h3>
+                    <p class="value-description">Мы не идем на компромиссы, когда речь идет о качестве. Отбираем лучшие зерна, следим за процессом обжарки и приготовления каждой чашки кофе.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💡</div>
+                    <h3 class="value-title">Инновации</h3>
+                    <p class="value-description">Мы постоянно учимся, экспериментируем и внедряем новые технологии и методы приготовления, чтобы удивлять наших гостей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция сертификатов -->
+    <section class="certificates">
+        <h2 class="section-title">Наши сертификаты и награды</h2>
+        <p class="section-subtitle">Признание профессионального сообщества</p>
+        
+        <div class="certificates-grid">
+            <div class="certificate">
+                <div class="certificate-img">
+                    🏆
+                </div>
+                <div class="certificate-info">
+                    <h3>Сертификат SCA</h3>
+                    <p>Наша кофейня сертифицирована Specialty Coffee Association, что подтверждает высокий уровень качества наших напитков и профессионализм бариста.</p>
+                </div>
+            </div>
+            <div class="certificate">
+                <div class="certificate-img">
+                    🥇
+                </div>
+                <div class="certificate-info">
+                    <h3>Лучшая кофейня 2023</h3>
+                    <p>По версии журнала "Coffee & Tea Magazine" наша кофейня признана лучшей в номинации "Атмосфера и качество".</p>
+                </div>
+            </div>
+            <div class="certificate">
+                <div class="certificate-img">
+                    🏅
+                </div>
+                <div class="certificate-info">
+                    <h3>Золотая чашка 2024</h3>
+                    <p>Награда за выдающиеся достижения в области качества кофе и инновационные методы приготовления от Российской кофейной ассоциации.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <span>☕</span>
+                    <span>Aroma Coffee</span>
+                </div>
+                <p>Мы создаем незабываемые впечатления через качественный кофе, уютную атмосферу и искреннее гостеприимство. Каждая чашка — это история, рассказанная с любовью.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">FB</a>
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">TW</a>
+                    <a href="#" class="social-link">YT</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-heading">Меню</h3>
+                <ul class="footer-links">
+                    <li><a href="#coffee">Кофе</a></li>
+                    <li><a href="#tea">Чай</a></li>
+                    <li><a href="#desserts">Десерты</a></li>
+                    <li><a href="#breakfast">Завтраки</a></li>
+                    <li><a href="#snacks">Закуски</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-heading">Информация</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#careers">Карьера</a></li>
+                    <li><a href="#news">Новости</a></li>
+                    <li><a href="#events">События</a></li>
+                    <li><a href="#catering">Кейтеринг</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-heading">Контакты</h3>
+                <ul class="footer-links">
+                    <li>📍 Москва, ул. Тверская, 15</li>
+                    <li>📞 +7 (495) 123-45-67</li>
+                    <li>✉️ info@aromacoffee.ru</li>
+                    <li>🕒 Пн-Вс: 07:00 - 23:00</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 Aroma Coffee. Все права защищены.
+            </div>
+            <div class="footer-bottom-links">
+                <a href="#privacy">Политика конфиденциальности</a>
+                <a href="#terms">Условия использования</a>
+                <a href="#cookies">Файлы cookie</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
